@@ -14,6 +14,9 @@ DATABASES = {
   }
 }
 
-INSTALLED_APPS = ['shorturls']
+INSTALLED_APPS = [
+    'django.contrib.sites',
+    'shorturls',
+]
 ROOT_URLCONF = ['shorturls.urls']
 TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), 'tests', 'templates'),)
