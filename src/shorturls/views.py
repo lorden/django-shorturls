@@ -1,7 +1,4 @@
-try:
-    from urllib.parse import urlparse
-except:
-    from urlparse import urlparse
+from six.moves.urllib.parse import urlparse
 
 from django.conf import settings
 from django.contrib.sites.models import Site, RequestSite
@@ -17,7 +14,7 @@ def redirect(request, prefix, tiny, converter=default_converter):
     Redirect to a given object from a short URL.
     """
     # Resolve the prefix and encoded ID into a model object and decoded ID.
-    # Many things here could go wrong -- bad prefix, bad value in 
+    # Many things here could go wrong -- bad prefix, bad value in
     # SHORTEN_MODELS, no such model, bad encoding -- so just return a 404 if
     # any of that stuff goes wrong.
     try:
