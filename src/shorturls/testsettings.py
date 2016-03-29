@@ -16,6 +16,8 @@ DATABASES = {
 
 INSTALLED_APPS = [
     'django.contrib.sites',
+    'django.contrib.contenttypes',
+    'django.contrib.auth',
     'shorturls',
 ]
 ROOT_URLCONF = ['shorturls.urls']

@@ -1,8 +1,10 @@
 from django.utils.six.moves.urllib.parse import urlsplit, urljoin
 
 from django.conf import settings
-from django.contrib.sites.models import Site, RequestSite
-from django.db import models
+# from django.contrib.sites.models import Site
+from django.contrib.sites.requests import RequestSite
+# from django.db import models
+from django.apps import apps
 from django.http import HttpResponsePermanentRedirect, Http404
 from django.shortcuts import get_object_or_404
 
@@ -22,7 +24,7 @@ def redirect(request, prefix, tiny, converter=default_converter):
     except KeyError:
         raise Http404('Bad prefix.')
     try:
-        model = models.get_model(app_label, model_name)
+        model = apps.get_model(app_label, model_name)
     except LookupError:
         model = False
     if not model:
@@ -53,8 +55,8 @@ def redirect(request, prefix, tiny, converter=default_converter):
         base = settings.SHORTEN_FULL_BASE_URL
 
     # Next, if the sites app is enabled, redirect to the current site.
-    elif Site._meta.installed:
-        base = 'http://%s/' % Site.objects.get_current().domain
+    # elif Site._meta.installed:
+        # base = 'http://%s/' % Site.objects.get_current().domain
 
     # Finally, fall back on the current request.
     else:
