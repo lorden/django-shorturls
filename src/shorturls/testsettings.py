@@ -22,3 +22,4 @@ INSTALLED_APPS = [
 ]
 ROOT_URLCONF = ['shorturls.urls']
 TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), 'tests', 'templates'),)
+SITE_ID = 1
