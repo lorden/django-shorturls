@@ -1,4 +1,7 @@
-from future.moves.urllib.parse import urlparse
+try:
+    from urllib.parse import urlparse
+except:
+    from urlparse import urlparse
 
 from django.conf import settings
 from django.contrib.sites.models import Site, RequestSite

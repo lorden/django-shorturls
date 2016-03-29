@@ -1,4 +1,7 @@
-from future.moves.urllib.parse import urlparse
+try:
+    from urllib.parse import urlparse
+except:
+    from urlparse import urlparse
 
 from django import template
 from django.conf import settings
