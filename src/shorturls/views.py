@@ -1,7 +1,4 @@
-try:
-    from urllib.parse import urljoin
-except ImportError as e:
-    import urlparse
+from future.moves.urllib.parse import urlparse
 
 from django.conf import settings
 from django.contrib.sites.models import Site, RequestSite
