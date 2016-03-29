@@ -1,4 +1,4 @@
-from django.utils.six.moves.urllib.parse import urlparse
+from django.utils.six.moves.urllib.parse import urljoin
 
 from django import template
 from django.conf import settings
@@ -33,7 +33,7 @@ class ShortURL(template.Node):
         tinyid = converter.from_decimal(obj.pk)
 
         if hasattr(settings, 'SHORT_BASE_URL') and settings.SHORT_BASE_URL:
-            return urlparse.urljoin(settings.SHORT_BASE_URL, prefix + tinyid)
+            return urljoin(settings.SHORT_BASE_URL, prefix + tinyid)
 
         try:
             return urlresolvers.reverse('shorturls.views.redirect', kwargs={
