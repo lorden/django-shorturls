@@ -1,4 +1,4 @@
-from django.utils.six.moves.urllib.parse import urlparse, urlsplit
+from django.utils.six.moves.urllib.parse import urlsplit, urljoin
 
 from django.conf import settings
 from django.contrib.sites.models import Site, RequestSite
@@ -60,4 +60,4 @@ def redirect(request, prefix, tiny, converter=default_converter):
     else:
         base = 'http://%s/' % RequestSite(request).domain
 
-    return HttpResponsePermanentRedirect(urlparse.urljoin(base, url))
+    return HttpResponsePermanentRedirect(urljoin(base, url))
